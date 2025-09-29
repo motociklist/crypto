@@ -22,7 +22,7 @@ class CryptoCoinTile extends StatelessWidget {
         style: theme.textTheme.bodyMedium,
       ),
       subtitle: Text(
-        '2000002\$',
+        '2000000\$',
         style: theme.textTheme.labelSmall,
       ),
       onTap: () {
