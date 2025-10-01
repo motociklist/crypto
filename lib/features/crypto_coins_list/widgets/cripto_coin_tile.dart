@@ -8,6 +8,7 @@ class CryptoCoinTile extends StatelessWidget {
 
   final String coinName;
 
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
