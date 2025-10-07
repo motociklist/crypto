@@ -1,6 +1,8 @@
 import 'package:crypto/features/crypto_coins_list/widgets/cripto_coin_tile.dart';
 import 'package:flutter/material.dart';
 
+import '../../../repositories/crypto_coins/crypto_coins_repositories.dart';
+
 class CryptoListScreen extends StatefulWidget {
   const CryptoListScreen({super.key, required this.title});
 
@@ -25,6 +27,12 @@ class _CryptoListScreenState extends State<CryptoListScreen> {
           return const CryptoCoinTile(
             coinName: coinName,
           );
+        },
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.download),
+        onPressed: () {
+            CryptoCoinsRepositories().getCoinsList();
         },
       ),
     );
