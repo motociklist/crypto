@@ -7,12 +7,16 @@ class CryptoCoinsRepositories {
     final response = await Dio().get('https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD,JPY,EUR');
     final data  = response.data as Map<String, dynamic>;
     debugPrint(response.toString());
+
     final cryptoCoinsList = data.entries
         .map((e) => CryptoCoin(
             name: e.key,
-            priceInUSD: (e.value as Map<String, dynamic>)['USD'],
+            // priceInUSD: (e.value as Map<String, dynamic>)['USD'],
+            priceInUSD: (e.value as num).toDouble(),
           ))
         .toList();
+    debugPrint(cryptoCoinsList.toString());
+
     return cryptoCoinsList;
   }
 }
