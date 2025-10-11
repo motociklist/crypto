@@ -4,16 +4,23 @@ import 'package:flutter/cupertino.dart';
 
 class CryptoCoinsRepositories {
   Future<List<CryptoCoin>> getCoinsList() async {
-    final response = await Dio().get('https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD,JPY,EUR');
+    final response = await Dio().get('https://min-api.cryptocompare.com/data/pricemultifull?fsyms=BTC,ETH,LTC&tsyms=USD,EUR');
+
     final data  = response.data as Map<String, dynamic>;
+    final dataRaw = data['RAW'] as Map<String, dynamic>;
     debugPrint(response.toString());
 
-    final cryptoCoinsList = data.entries
-        .map((e) => CryptoCoin(
-            name: e.key,
-            // priceInUSD: (e.value as Map<String, dynamic>)['USD'],
-            priceInUSD: (e.value as num).toDouble(),
-          ))
+    final cryptoCoinsList = dataRaw.entries
+        .map((e) {
+          final usdData =  (e.value as Map<String, dynamic>)['USD'] as Map<String, dynamic>;
+          final price = usdData['PRICE'];
+          final imageURL = usdData['IMAGEURL'];
+          return CryptoCoin(
+             name: e.key,
+             priceInUSD : price,
+              imageUrl: 'https://www.cryptocompare.com/$imageURL'
+          );
+        })
         .toList();
     debugPrint(cryptoCoinsList.toString());
 

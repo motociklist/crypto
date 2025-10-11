@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 
 final dartTheme = ThemeData(
   scaffoldBackgroundColor: const Color.fromARGB(255, 31, 31, 31),
-  primarySwatch: Colors.yellow, // Основной цвет (желтый)
+  primarySwatch: Colors.yellow,
   appBarTheme: const AppBarTheme(
     backgroundColor: Color.fromARGB(255, 31, 31, 31),
+    elevation: 0,
     titleTextStyle: TextStyle(
+      color: Colors.white,
       fontWeight: FontWeight.w700,
       fontSize: 28,
     ),
