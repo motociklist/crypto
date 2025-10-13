@@ -23,6 +23,7 @@ class _CryptoCoinScreenState extends State<CryptoCoinScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(coinName ?? '...'),
+        backgroundColor: Colors.red,
       ),
     );
   }
