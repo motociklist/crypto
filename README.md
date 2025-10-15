@@ -21,3 +21,6 @@ flutter pub get
 ## choosing a device
 flutter run
 2 chrome
+
+## build device
+flutter build ...
