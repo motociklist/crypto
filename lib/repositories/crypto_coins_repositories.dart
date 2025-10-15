@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:crypto/repositories/crypto_coins/abstract_coins_repository.dart';
 import 'package:crypto/repositories/crypto_coins/models/crypto_coin.dart';
 import 'package:crypto/repositories/crypto_coins/models/crypto_coin_detail.dart';
