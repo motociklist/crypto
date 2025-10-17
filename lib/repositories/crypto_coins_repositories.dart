@@ -12,7 +12,7 @@ class CryptoCoinsRepositories implements AbstractCoinsRepository {
 
     final data  = response.data as Map<String, dynamic>;
     final dataRaw = data['RAW'] as Map<String, dynamic>;
-    debugPrint(response.toString());
+    // debugPrint(response.toString());
 
     final cryptoCoinsList = dataRaw.entries
         .map((e) {
@@ -26,7 +26,7 @@ class CryptoCoinsRepositories implements AbstractCoinsRepository {
           );
         })
         .toList();
-    debugPrint(cryptoCoinsList.toString());
+    // debugPrint(cryptoCoinsList.toString());
 
     return cryptoCoinsList;
   }
@@ -46,7 +46,7 @@ class CryptoCoinsRepositories implements AbstractCoinsRepository {
     final height24Hour = usdData['HIGH24HOUR'];
     final low24Hour = usdData['LOW24HOUR'];
 
-    print(toSymbol);
+    // print(toSymbol);
 
     return CryptoCoinDetail(
       name: currencyCode,

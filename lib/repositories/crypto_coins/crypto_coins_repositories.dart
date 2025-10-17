@@ -12,7 +12,7 @@ class CryptoCoinsRepositories implements AbstractCoinsRepository {
 
     final data  = response.data as Map<String, dynamic>;
     final dataRaw = data['RAW'] as Map<String, dynamic>;
-    debugPrint(response.toString());
+    //debugPrint(response.toString());
 
     final cryptoCoinsList = dataRaw.entries
         .map((e) {
@@ -26,14 +26,14 @@ class CryptoCoinsRepositories implements AbstractCoinsRepository {
           );
         })
         .toList();
-    debugPrint(cryptoCoinsList.toString());
+    //debugPrint(cryptoCoinsList.toString());
 
     return cryptoCoinsList;
   }
 
   @override
   Future<CryptoCoinDetail> getCoinDetail(String currencyCode) async {
-    print(currencyCode);
+    //print(currencyCode);
     final response = await Dio().get('https://min-api.cryptocompare.com/data/pricemultifull?fsyms=$currencyCode,&tsyms=USD,EUR');
 
     final data  = response.data as Map<String, dynamic>;
