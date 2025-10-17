@@ -1,6 +1,6 @@
-import 'package:crypto/repositories/crypto_coins/abstract_coins_repository.dart';
-import 'package:crypto/repositories/crypto_coins/models/crypto_coin.dart';
-import 'package:crypto/repositories/crypto_coins/models/crypto_coin_detail.dart';
+import 'package:crypto_app/repositories/crypto_coins/abstract_coins_repository.dart';
+import 'package:crypto_app/repositories/crypto_coins/models/crypto_coin.dart';
+import 'package:crypto_app/repositories/crypto_coins/models/crypto_coin_detail.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 

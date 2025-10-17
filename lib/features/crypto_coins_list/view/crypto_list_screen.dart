@@ -1,8 +1,8 @@
 import 'dart:async';
 
-import 'package:crypto/features/crypto_coins_list/bloc/crypto_list_bloc.dart';
-import 'package:crypto/features/crypto_coins_list/widgets/crypto_coin_tile.dart';
-import 'package:crypto/repositories/crypto_coins/abstract_coins_repository.dart';
+import 'package:crypto_app/features/crypto_coins_list/bloc/crypto_list_bloc.dart';
+import 'package:crypto_app/features/crypto_coins_list/widgets/crypto_coin_tile.dart';
+import 'package:crypto_app/repositories/crypto_coins/abstract_coins_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';

@@ -1,4 +1,4 @@
-name: crypto
+name: crypto_app
 description: "A new Flutter project."
 
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
@@ -13,16 +13,19 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^1.0.6
   flutter_svg: ^1.1.6
-  dio: ^4.0.6
+  dio: ^5.0.2
   get_it: ^7.2.0
   flutter_bloc: ^8.1.2
+  win32: ^5.15.0
   equatable: ^2.0.5
+  intl: ^0.18.0
+  talker_flutter: ^5.0.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  flutter_lints: ^3.0.0
+  flutter_lints: ^2.0.0
 
 flutter:
 
