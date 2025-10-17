@@ -1,5 +1,5 @@
-import 'package:crypto/router/router.dart';
-import 'package:crypto/theme/theme.dart';
+import 'package:crypto_app/router/router.dart';
+import 'package:crypto_app/theme/theme.dart';
 import 'package:flutter/material.dart';
 
 class MyApp extends StatelessWidget {
