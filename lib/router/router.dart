@@ -1,7 +1,26 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
+
 import 'package:crypto_app/features/crypto_coin/view/crypto_coin_screen.dart';
 import 'package:crypto_app/features/crypto_coins_list/view/crypto_list_screen.dart';
+import 'package:crypto_app/features/crypto_coin/bloc/crypto_coin_bloc.dart';
+import 'package:crypto_app/repositories/abstract_coins_repository.dart';
 
 final routes = {
   '/': (context) => const CryptoListScreen(title: 'Crypto'),
-  '/coin': (context) => const CryptoCoinScreen(),
+  '/coin': (context) {
+    final args = ModalRoute.of(context)?.settings.arguments;
+    if (args is String) {
+      return BlocProvider(
+        create: (_) => CryptoCoinBloc(GetIt.I<AbstractCoinsRepository>()),
+        child: CryptoCoinScreen(coinName: args),
+      );
+    } else {
+      return const Scaffold(
+        body: Center(child: Text('Ошибка: не передан coinName')),
+      );
+    }
+  },
 };
+
