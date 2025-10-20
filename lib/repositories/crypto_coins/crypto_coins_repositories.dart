@@ -2,13 +2,15 @@ import 'package:crypto_app/repositories/crypto_coins/abstract_coins_repository.d
 import 'package:crypto_app/repositories/crypto_coins/models/crypto_coin.dart';
 import 'package:crypto_app/repositories/crypto_coins/models/crypto_coin_detail.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter/cupertino.dart';
 
 class CryptoCoinsRepositories implements AbstractCoinsRepository {
+  final Dio dio;
+
+  CryptoCoinsRepositories({required this.dio});
 
   @override
   Future<List<CryptoCoin>> getCoinsList() async {
-    final response = await Dio().get('https://min-api.cryptocompare.com/data/pricemultifull?fsyms=BTC,ETH,LTC,XRP,TON,BNB,DOGE,SOL,AID,DOV,CAG,NOT,&tsyms=USD,EUR');
+    final response = await dio.get('https://min-api.cryptocompare.com/data/pricemultifull?fsyms=BTC,ETH,LTC,XRP,TON,BNB,DOGE,SOL,AID,DOV,CAG,NOT,&tsyms=USD,EUR');
 
     final data  = response.data as Map<String, dynamic>;
     final dataRaw = data['RAW'] as Map<String, dynamic>;
@@ -34,7 +36,8 @@ class CryptoCoinsRepositories implements AbstractCoinsRepository {
   @override
   Future<CryptoCoinDetail> getCoinDetail(String currencyCode) async {
     //print(currencyCode);
-    final response = await Dio().get('https://min-api.cryptocompare.com/data/pricemultifull?fsyms=$currencyCode,&tsyms=USD,EUR');
+
+    final response = await dio.get('https://min-api.cryptocompare.com/data/pricemultifull?fsyms=$currencyCode,&tsyms=USD,EUR');
 
     final data  = response.data as Map<String, dynamic>;
     final dataRaw = data['RAW'] as Map<String, dynamic>;

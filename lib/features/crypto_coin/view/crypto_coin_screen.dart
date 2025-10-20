@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'dart:async';
 
 import 'package:flutter/material.dart';
@@ -24,6 +25,24 @@ class _CryptoCoinScreenState extends State<CryptoCoinScreen> {
     // Берём bloc из контекста
     _cryptoCoinBloc = context.read<CryptoCoinBloc>();
 
+  Future<void> _loadCoinDetails() async {
+    if (coinName == null) return;
+
+    try {
+      final repo = CryptoCoinsRepositories(dio: Dio());
+      final coin = await repo.getCoinDetail(coinName!);
+
+      if (!mounted) return;
+      setState(() {
+        _cryptoCoinDetail = coin;
+        _isLoading = false;
+      });
+    } catch (e) {
+      debugPrint('Ошибка при загрузке данных: $e');
+      if (mounted) {
+        setState(() => _isLoading = false);
+      }
+    }
     // Запускаем загрузку данных
     _cryptoCoinBloc.add(
       LoadCryptoCoin(
