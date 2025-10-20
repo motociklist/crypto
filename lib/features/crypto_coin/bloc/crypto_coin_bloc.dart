@@ -1,14 +1,14 @@
 import 'dart:async';
-import 'package:crypto_app/repositories/abstract_coins_repository.dart';
+import 'package:crypto_app/repositories/crypto_coins/abstract_coins_repository.dart';
 import 'package:crypto_app/repositories/crypto_coins/models/crypto_coin_detail.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:talker_flutter/talker_flutter.dart';
 
+
 part 'crypto_coin_event.dart';
 part 'crypto_coin_state.dart';
-
 
 
 class CryptoCoinBloc extends Bloc<CryptoCoinEvent, CryptoCoinState> {
