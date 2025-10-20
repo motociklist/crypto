@@ -6,9 +6,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:talker_flutter/talker_flutter.dart';
 
+
 part 'crypto_coin_event.dart';
 part 'crypto_coin_state.dart';
-
 
 
 class CryptoCoinBloc extends Bloc<CryptoCoinEvent, CryptoCoinState> {
@@ -16,22 +16,22 @@ class CryptoCoinBloc extends Bloc<CryptoCoinEvent, CryptoCoinState> {
 
   CryptoCoinBloc(this.coinsRepository) : super (CryptoCoinInitial()) {
 
-    // on<LoadCryptoList>((event,emit) async {
-    //   try {
-    //     if (state is! CryptoListLoaded) {
-    //       emit(CryptoListLoading());
-    //     }
-    //     final coinsList = await coinsRepository.getCoinsList();
-    //     emit(CryptoListLoaded(coinsList: coinsList));
-    //   }
-    //   catch (e, st) {
-    //     emit(CryptoListLoadingFailure(exception: e));
-    //     GetIt.I<Talker>().handle(e,st);
-    //   }
-    //   finally {
-    //     event.completer?.complete();
-    //   }
-    // });
+    on<LoadCryptoCoin>((event,emit) async {
+      try {
+        if (state is! CryptoCoinLoaded) {
+          emit(CryptoCoinLoading());
+        }
+        final coinCoin = await coinsRepository.getCoinDetail(event.currencyCode);
+        emit(CryptoCoinLoaded(coinCoin: coinCoin));
+      }
+      catch (e, st) {
+        emit(CryptoCoinLoadingFailure(exception: e));
+        GetIt.I<Talker>().handle(e,st);
+      }
+      finally {
+        event.completer?.complete();
+      }
+    });
   }
 
   @override

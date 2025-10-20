@@ -25,6 +25,7 @@ class CryptoCoinTile extends StatelessWidget {
         '${coin.priceInUSD}\$',
         style: theme.textTheme.labelSmall,
       ),
+
       onTap: () {
         Navigator.of(context).pushNamed(
           '/coin',
