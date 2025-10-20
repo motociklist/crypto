@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import '../../../repositories/crypto_coins/crypto_coins_repositories.dart';
 import '../../../repositories/crypto_coins/models/crypto_coin_detail.dart';
@@ -36,7 +37,7 @@ class _CryptoCoinScreenState extends State<CryptoCoinScreen> {
     if (coinName == null) return;
 
     try {
-      final repo = CryptoCoinsRepositories();
+      final repo = CryptoCoinsRepositories(dio: Dio());
       final coin = await repo.getCoinDetail(coinName!);
 
       if (!mounted) return;
