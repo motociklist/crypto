@@ -4,5 +4,5 @@ import 'package:crypto_app/repositories/crypto_coins/models/crypto_coin_detail.d
 
 abstract  class AbstractCoinsRepository  {
   Future<List<CryptoCoin>> getCoinsList();
-  Future<CryptoCoinDetail> getCoinDetail (String currencyCode);
+  Future<CryptoCoinDetail> getCoinDetail(String currencyCode);
 }
