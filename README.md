@@ -24,3 +24,7 @@ flutter run
 
 ## build device
 flutter build ...
+
+
+## Serializable auto
+flutter pub run build_runner build --delete-conflicting-outputs

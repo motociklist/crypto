@@ -2,7 +2,6 @@ import 'package:crypto_app/repositories/crypto_coins/abstract_coins_repository.d
 import 'package:crypto_app/repositories/crypto_coins/models/crypto_coin.dart';
 import 'package:crypto_app/repositories/crypto_coins/models/crypto_coin_detail.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter/cupertino.dart';
 
 class CryptoCoinsRepositories implements AbstractCoinsRepository {
 
@@ -22,7 +21,7 @@ class CryptoCoinsRepositories implements AbstractCoinsRepository {
           return CryptoCoin(
              name: e.key,
              priceInUSD : price,
-              imageUrl: 'https://www.cryptocompare.com/$imageURL'
+             imageUrl: 'https://www.cryptocompare.com/$imageURL'
           );
         })
         .toList();
