@@ -1,3 +1,4 @@
+import 'package:crypto_app/features/login/view/login_screen.dart';
 import 'package:crypto_app/repositories/crypto_coins/abstract_coins_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -8,7 +9,10 @@ import 'package:crypto_app/features/crypto_coin/bloc/crypto_coin_bloc.dart';
 
 
 final routes = {
-  '/': (context) => const CryptoListScreen(title: 'Crypto'),
+
+
+  '/': (context) => const AuthPage(),
+  '/coins': (context) => const CryptoListScreen(title: 'Crypto'),
   '/coin': (context) {
     final args = ModalRoute.of(context)?.settings.arguments;
     if (args is String) {
