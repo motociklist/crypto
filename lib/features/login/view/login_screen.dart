@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
-import 'package:talker_flutter/talker_flutter.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class AuthPage extends StatefulWidget {
   const AuthPage({super.key});
@@ -9,13 +8,54 @@ class AuthPage extends StatefulWidget {
   State<AuthPage> createState() => _AuthPageState();
 }
 
-class _AuthPageState extends State<AuthPage>
-    with SingleTickerProviderStateMixin {
+class _AuthPageState extends State<AuthPage> with SingleTickerProviderStateMixin {
   bool isLogin = true;
 
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _nameController = TextEditingController();
+
+  Future<void> _register() async {
+    try {
+      final auth = FirebaseAuth.instance;
+
+      final userCredential = await auth.createUserWithEmailAndPassword(
+        email: _emailController.text.trim(),
+        password: _passwordController.text.trim(),
+      );
+
+      await userCredential.user?.updateDisplayName(_nameController.text.trim());
+
+      if (mounted) {
+        Navigator.of(context).pushReplacementNamed('/coins');
+      }
+    } on FirebaseAuthException catch (e) {
+      _showError(e.message ?? 'Ошибка регистрации');
+    }
+  }
+
+  Future<void> _login() async {
+    try {
+      final auth = FirebaseAuth.instance;
+
+      await auth.signInWithEmailAndPassword(
+        email: _emailController.text.trim(),
+        password: _passwordController.text.trim(),
+      );
+
+      if (mounted) {
+        Navigator.of(context).pushReplacementNamed('/coins');
+      }
+    } on FirebaseAuthException catch (e) {
+      _showError(e.message ?? 'Ошибка входа');
+    }
+  }
+
+  void _showError(String message) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text(message)),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -74,7 +114,6 @@ class _AuthPageState extends State<AuthPage>
                   ),
                   const SizedBox(height: 30),
 
-                  // Имя (только при регистрации)
                   if (!isLogin)
                     TextField(
                       controller: _nameController,
@@ -86,7 +125,6 @@ class _AuthPageState extends State<AuthPage>
                     ),
                   if (!isLogin) const SizedBox(height: 16),
 
-                  // Email
                   TextField(
                     controller: _emailController,
                     style: const TextStyle(color: Colors.white),
@@ -97,7 +135,6 @@ class _AuthPageState extends State<AuthPage>
                   ),
                   const SizedBox(height: 16),
 
-                  // Пароль
                   TextField(
                     controller: _passwordController,
                     obscureText: true,
@@ -109,7 +146,6 @@ class _AuthPageState extends State<AuthPage>
                   ),
                   const SizedBox(height: 30),
 
-                  // Кнопка
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       minimumSize: const Size(double.infinity, 50),
@@ -119,9 +155,11 @@ class _AuthPageState extends State<AuthPage>
                       ),
                     ),
                     onPressed: () {
-                      Navigator.of(context).pushNamed(
-                        '/coins',
-                      );
+                      if (isLogin) {
+                        _login();
+                      } else {
+                        _register();
+                      }
                     },
                     child: Text(
                       isLogin ? 'Войти' : 'Создать аккаунт',
@@ -134,7 +172,6 @@ class _AuthPageState extends State<AuthPage>
                   ),
                   const SizedBox(height: 20),
 
-                  // Переключение режима
                   TextButton(
                     onPressed: () {
                       setState(() {
