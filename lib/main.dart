@@ -1,5 +1,8 @@
 import 'dart:async';
 import 'package:crypto_app/firebase_options.dart';
+import 'package:crypto_app/repositories/crypto_coins/models/crypto_coin_detail.dart';
+
+import 'package:crypto_app/repositories/models/crypto_coin.dart';
 import 'package:dio/dio.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -16,11 +19,11 @@ import 'package:talker_flutter/talker_flutter.dart';
 
 void main() {
   runZonedGuarded(() async {
-  WidgetsFlutterBinding.ensureInitialized();
+    WidgetsFlutterBinding.ensureInitialized();
     final talker = TalkerFlutter.init();
     GetIt.I.registerSingleton<Talker>(talker);
     GetIt.I<Talker>().debug('Talker started');
-
+    const cryptoCoinsBoxName = 'crypto_coins_box';
 
     final app = await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,
@@ -28,10 +31,15 @@ void main() {
 
     talker.info(app.options.projectId);
     final dio = Dio();
+
     await Hive.initFlutter();
+    Hive.registerAdapter(CryptoCoinAdapter());
+    Hive.registerAdapter(CryptoCoinDetailAdapter());
+
+    final cryptoCoinsBox = await Hive.openBox<dynamic>(cryptoCoinsBoxName);
 
 
-  dio.interceptors.add(
+    dio.interceptors.add(
       TalkerDioLogger(
         talker: talker,
         settings: const TalkerDioLoggerSettings(
@@ -48,14 +56,18 @@ void main() {
     );
 
     GetIt.I.registerLazySingleton<AbstractCoinsRepository>(
-          () => CryptoCoinsRepositories(dio: dio),
+          () => CryptoCoinsRepositories(
+            dio: dio,
+            cryptoCoinsBox: cryptoCoinsBox
+          ),
     );
 
     FlutterError.onError = (details) =>
         GetIt.I<Talker>().handle(details.exception, details.stack);
 
     runApp(const MyApp());
-  }, (error, stackTrace) {
+  },
+  (error, stackTrace) {
     GetIt.I<Talker>().handle(error, stackTrace);
   });
 }
