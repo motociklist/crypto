@@ -1,4 +1,3 @@
-import 'package:crypto_app/repositories/crypto_coins/models/crypto_coin.dart';
 import 'package:equatable/equatable.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:json_annotation/json_annotation.dart';
