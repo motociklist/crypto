@@ -1,5 +1,5 @@
 import 'dart:async';
-
+import 'package:auto_route/auto_route.dart';
 import 'package:crypto_app/features/crypto_coins_list/bloc/crypto_list_bloc.dart';
 import 'package:crypto_app/features/crypto_coins_list/widgets/crypto_coin_tile.dart';
 import 'package:crypto_app/repositories/crypto_coins/abstract_coins_repository.dart';
@@ -8,10 +8,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:talker_flutter/talker_flutter.dart';
 
-class CryptoListScreen extends StatefulWidget {
-  const CryptoListScreen({super.key, required this.title});
 
-  final String title;
+@RoutePage()
+
+class CryptoListScreen extends StatefulWidget {
+  const CryptoListScreen({super.key});
+
+  final String title = 'Cripto';
 
   @override
   State<CryptoListScreen> createState() => _CryptoListScreenState();
