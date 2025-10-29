@@ -1,8 +1,7 @@
 import 'dart:async';
 import 'package:crypto_app/firebase_options.dart';
+import 'package:crypto_app/repositories/crypto_coins/models/crypto_coin.dart';
 import 'package:crypto_app/repositories/crypto_coins/models/crypto_coin_detail.dart';
-
-import 'package:crypto_app/repositories/models/crypto_coin.dart';
 import 'package:dio/dio.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';

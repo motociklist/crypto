@@ -1,16 +1,21 @@
-import 'package:equatable/equatable.dart';
+import 'package:hive_flutter/adapters.dart';
 
-class CryptoCoin extends Equatable{
-  const CryptoCoin({
-      required this.name,
-      required this.priceInUSD,
-      required this.imageUrl,
+part 'crypto_coin.g.dart';
+
+@HiveType(typeId: 2)
+class CryptoCoin {
+  CryptoCoin({
+    required this.name,
+    required this.priceInUSD,
+    required this.imageUrl,
   });
 
+  @HiveField(0)
   final String name;
-  final double priceInUSD;
-  final String imageUrl;
 
-  @override
-  List<Object?> get props => [name, priceInUSD, imageUrl];
+  @HiveField(1)
+  final double priceInUSD;
+
+  @HiveField(2)
+  final String imageUrl;
 }
