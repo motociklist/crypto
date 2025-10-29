@@ -1,10 +1,12 @@
 import 'dart:async';
-
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'package:crypto_app/features/crypto_coin/bloc/crypto_coin_bloc.dart';
 import 'package:crypto_app/repositories/crypto_coins/models/crypto_coin_detail.dart';
+
+
+@RoutePage()
 
 class CryptoCoinScreen extends StatefulWidget {
   final String coinName;
@@ -21,9 +23,7 @@ class _CryptoCoinScreenState extends State<CryptoCoinScreen> {
   @override
   void initState() {
     super.initState();
-    // Берём bloc из контекста
     _cryptoCoinBloc = context.read<CryptoCoinBloc>();
-    // Запускаем загрузку данных
     _cryptoCoinBloc.add(
       LoadCryptoCoin(
         completer: null,
