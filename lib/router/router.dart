@@ -9,8 +9,6 @@ import 'package:crypto_app/features/crypto_coin/bloc/crypto_coin_bloc.dart';
 
 
 final routes = {
-
-
   '/': (context) => const AuthPage(),
   '/coins': (context) => const CryptoListScreen(title: 'Crypto'),
   '/coin': (context) {
