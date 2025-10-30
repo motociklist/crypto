@@ -30,8 +30,11 @@ class CryptoCoinsRepositories implements AbstractCoinsRepository {
     }
 
     cryptoCoinsList.sort((a,b) => b.priceInUSD.compareTo(a.priceInUSD));
+
     print(12);
     print(cryptoCoinsList.toString());
+    print(cryptoCoinsList.map((e) => '${e.name} ${e.priceInUSD}').join(', '));
+
     return cryptoCoinsList.cast<CryptoCoin>();
   }
 
