@@ -12,7 +12,7 @@ final dartTheme = ThemeData(
       fontSize: 28,
     ),
     iconTheme: IconThemeData(
-      color: Colors.white, // Цвет стрелки "назад" для всего приложения
+      color: Colors.white,
     ),
   ),
   textTheme: const TextTheme(
