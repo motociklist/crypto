@@ -6,11 +6,11 @@ import 'package:crypto_app/repositories/crypto_coins/abstract_coins_repository.d
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:talker_flutter/talker_flutter.dart';
 
 class CryptoListScreen extends StatefulWidget {
   const CryptoListScreen({super.key, required this.title});
-
   final String title;
 
   @override
@@ -19,6 +19,7 @@ class CryptoListScreen extends StatefulWidget {
 
 class _CryptoListScreenState extends State<CryptoListScreen> {
 
+  // final Box<dynamic> cryptoCoinsBox = {2,'3'};
   final _cryptoListBloc = CryptoListBloc(
     GetIt.I<AbstractCoinsRepository>(),
   );
@@ -104,12 +105,13 @@ class _CryptoListScreenState extends State<CryptoListScreen> {
         ),
       ),
 
-      // floatingActionButton: FloatingActionButton(
-      //   child: const Icon(Icons.download),
-      //   onPressed: () async {
-      //    await _loadCryptoCoins()
-      //   },
-      // ),
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.download),
+        onPressed: () async {
+          // await cryptoCoinsBox.put(3, 'alue');
+          // print(cryptoCoinsBox.values);
+        },
+      ),
     );
   }
 }

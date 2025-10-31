@@ -76,7 +76,10 @@ class CryptoCoinsRepositories implements AbstractCoinsRepository {
       GetIt.instance<Talker>().handle(e, st);
       print(cryptoCoinsBox.containsKey(currencyCode));
       //FIXME
-      print(cryptoCoinsBox.get(currencyCode));
+      print(cryptoCoinsBox.get(currencyCode.length));
+      print(2222);
+      print(cryptoCoinsBox.keys);
+
       if (cryptoCoinsBox.containsKey(currencyCode)) {
         return cryptoCoinsBox.get(currencyCode) as CryptoCoinDetail;
       } else {
