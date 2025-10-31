@@ -23,6 +23,7 @@ void main() {
     GetIt.I.registerSingleton<Talker>(talker);
     GetIt.I<Talker>().debug('Talker started');
     const cryptoCoinsBoxName = 'crypto_coins_box';
+    const cryptoCoinsBoxName2 = 'crypto_coins_box2';
 
     final app = await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,
@@ -34,6 +35,7 @@ void main() {
     await Hive.initFlutter();
     Hive.registerAdapter(CryptoCoinAdapter());
     Hive.registerAdapter(CryptoCoinDetailAdapter());
+    // Hive.registerAdapter();
 
     final cryptoCoinsBox = await Hive.openBox<dynamic>(cryptoCoinsBoxName);
 
