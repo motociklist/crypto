@@ -1,3 +1,4 @@
+import 'package:crypto_app/features/about_me/view/about_me_screen.dart';
 import 'package:crypto_app/features/login/view/login_screen.dart';
 import 'package:crypto_app/repositories/crypto_coins/abstract_coins_repository.dart';
 import 'package:flutter/material.dart';
@@ -24,5 +25,6 @@ final routes = {
       );
     }
   },
+  '/about_me': (context) => const AboutMeScreen(),
 };
 

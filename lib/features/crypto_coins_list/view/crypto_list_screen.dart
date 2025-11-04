@@ -110,6 +110,12 @@ class _CryptoListScreenState extends State<CryptoListScreen> {
         onPressed: () async {
           // await cryptoCoinsBox.put(3, 'alue');
           // print(cryptoCoinsBox.values);
+          print(333);
+
+          Navigator.of(context).pushNamed(
+            '/about_me',
+          );
+
         },
       ),
     );
