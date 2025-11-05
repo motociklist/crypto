@@ -8,6 +8,7 @@ class AboutMeBloc extends Bloc<AboutMeEvent, AboutMeState> {
   AboutMeBloc() : super(AboutMeInitial()) {
     on<LoadMe>((event, emit) {
       print('LoadMe called with user: ${event.user}');
+      emit(AboutMeError('ggg'));
     });
     on<LoadMeEnd>((event, emit) {
       print('LoadMeEnd called22222222222222222222222222');
