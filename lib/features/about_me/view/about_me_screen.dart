@@ -47,7 +47,7 @@ class _AboutMeView extends StatelessWidget {
               ElevatedButton(
                 onPressed: () {
                   aboutMeBloc.add(LoadMe(user: 'Иван Петров'));
-                 // aboutMeBloc.add(LoadMeEnd());
+                  aboutMeBloc.add(LoadMeEnd());
                   Navigator.pop(context);
                 },
                 child: const Text('Назад'),
