@@ -17,7 +17,7 @@ class AboutMeScreen extends StatelessWidget {
 }
 
 class _AboutMeView extends StatelessWidget {
-  const _AboutMeView({super.key});
+  const _AboutMeView();
 
   @override
   Widget build(BuildContext context) {
