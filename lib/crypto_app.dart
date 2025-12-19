@@ -1,5 +1,4 @@
 import 'package:crypto_app/features/crypto_coin/bloc/crypto_coin_bloc.dart';
-import 'package:crypto_app/features/crypto_coins_list/view/crypto_list_screen.dart';
 import 'package:crypto_app/repositories/crypto_coins/abstract_coins_repository.dart';
 import 'package:crypto_app/repositories/user_coins/user_coins_repository.dart';
 import 'package:crypto_app/router/router.dart';
@@ -24,7 +23,7 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         title: 'CryptoCurrenciesList',
-        theme: dartTheme,
+        theme: darkTheme,
         routes: routes,
       ),
     );
