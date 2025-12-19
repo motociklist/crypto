@@ -22,7 +22,7 @@ class CryptoCoinDetailAdapter extends TypeAdapter<CryptoCoinDetail> {
       imageUrl: fields[3] as String,
       toSymbol: fields[2] as String,
       lastUpdate: fields[4] as DateTime,
-      height24Hour: fields[5] as double,
+      high24Hour: fields[5] as double,
       low24Hour: fields[6] as double,
     );
   }
@@ -42,7 +42,7 @@ class CryptoCoinDetailAdapter extends TypeAdapter<CryptoCoinDetail> {
       ..writeByte(4)
       ..write(obj.lastUpdate)
       ..writeByte(5)
-      ..write(obj.height24Hour)
+      ..write(obj.high24Hour)
       ..writeByte(6)
       ..write(obj.low24Hour);
   }
@@ -69,7 +69,7 @@ CryptoCoinDetail _$CryptoCoinDetailFromJson(Map<String, dynamic> json) =>
       imageUrl: json['IMAGEURL'] as String,
       toSymbol: json['TOSYMBOL'] as String,
       lastUpdate: DateTime.parse(json['LASTUPDATE'] as String),
-      height24Hour: (json['HIGH24HOUR'] as num).toDouble(),
+      high24Hour: (json['HIGH24HOUR'] as num).toDouble(),
       low24Hour: (json['LOW24HOUR'] as num).toDouble(),
     );
 
@@ -80,6 +80,6 @@ Map<String, dynamic> _$CryptoCoinDetailToJson(CryptoCoinDetail instance) =>
       'TOSYMBOL': instance.toSymbol,
       'IMAGEURL': instance.imageUrl,
       'LASTUPDATE': instance.lastUpdate.toIso8601String(),
-      'HIGH24HOUR': instance.height24Hour,
+      'HIGH24HOUR': instance.high24Hour,
       'LOW24HOUR': instance.low24Hour,
     };
